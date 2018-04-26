@@ -1,0 +1,21 @@
+
+import json
+import sys, subprocess
+
+
+config = json.loads(open('config/defaults.json').read())
+for item in config:
+	dependencies.append(item)
+
+#dependencies = ['chardet','idna','beautifulsoup']
+
+flag=0
+for dep in dependencies:
+   try:
+     subprocess.check_call(["pip","install","-q","-q","-q","--user",dep])
+   except:
+      print "can not install "+dep    
+      flag=1
+      
+if flag==0:
+   print "success.."
